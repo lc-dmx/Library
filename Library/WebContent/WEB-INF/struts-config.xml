@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="adminForm" type="cn.cumt.library.form.AdminForm" />
+		<form-bean name="userForm" type="cn.cumt.library.form.UserForm" />
+		<form-bean name="dataCategoryForm" type="cn.cumt.library.form.DataCategoryForm" />
+		<form-bean name="dataForm" type="cn.cumt.library.form.DataForm" />
+		<form-bean name="orderForm" type="cn.cumt.library.form.OrderForm" />
+		<form-bean name="afficheForm" type="cn.cumt.library.form.AfficheForm" />
+		<form-bean name="commentForm" type="cn.cumt.library.form.CommentForm" />
+		<form-bean name="postForm" type="cn.cumt.library.form.PostForm" />
+		<form-bean name="reserveForm" type="cn.cumt.library.form.ReserveForm" />
+		<form-bean name="orderReactForm" type="cn.cumt.library.form.OrderReactForm" />
+		<form-bean name="seatForm" type="cn.cumt.library.form.SeatForm" />
+		<form-bean name="roomForm" type="cn.cumt.library.form.RoomForm" />		
+		<form-bean name="mailboxForm" type="cn.cumt.library.form.MailboxForm" />		
+	</form-beans>
+	<action-mappings>
+
+		<!-- 管理员处理 -->
+		<action name="adminForm" path="/adminAction" scope="request"
+			type="cn.cumt.library.action.AdminAction" validate="true">
+			<forward name="checkAdminResult" path="/adminLoginResult.jsp" />
+		</action>
+
+		<!-- 用户处理 -->
+		<action name="userForm" path="/userAction" scope="request"
+			type="cn.cumt.library.action.UserAction" validate="true">
+			<!-- 用户前台操作 -->
+			<forward name="userLogin" path="/userLoginResult.jsp" />
+			<forward name="insertUser" path="/userRegisterSuccess.jsp" />
+			<forward name="checkUserPassword" path="/userFindPassword2.jsp" />
+			<forward name="checkUserPasswordFalse" path="/userFindPassword1False.jsp" />
+			<forward name="userFindPasswordResult" path="/userFindPasswordResult.jsp" />
+			<forward name="selectUserId" path="/userInformation.jsp" />
+			<forward name="updateUser" path="/userInformationResult.jsp" />
+			
+			<!-- 管理员后台操作 -->			
+			<forward name="selectUser" path="/adminLogined.jsp" />
+		</action>
+
+		<!-- 资料类别处理 -->
+		<action name="dataCategoryForm" path="/dataCategoryAction" scope="request"
+			type="cn.cumt.library.action.DataCategoryAction" validate="true">
+			<forward name="bigTypeSelect" path="/bg-bigTypeSelect.jsp" />
+			<forward name="resultBigType" path="/bg-bigTypeResult.jsp" />
+		</action>
+
+		<!-- 资料信息处理 -->
+		<action name="dataForm" path="/dataAction" scope="request"
+			type="cn.cumt.library.action.DataAction" validate="true">
+
+			<!-- 后台处理 -->
+			<forward name="goodSelect" path="/bg-goodSelect.jsp" />
+			<forward name="selectContent" path="/bg-goodSelectContent.jsp" />
+			<forward name="goodsOperation" path="/bg-goodsResult.jsp" />
+			<forward name="goodForward" path="/bg-goodInsert.jsp" />
+			<forward name="managerFreePirce" path="/bg-goodsFreePirce.jsp" />
+			<forward name="goodSelectMark" path="/bg-goodsMarkSelect.jsp" />
+			<forward name="goodSelectBig" path="/bg-goodSelectBig.jsp" />
+			<forward name="goodSelectSmall" path="/bg-goodSelectSmall.jsp" />
+
+			<!-- 前台处理 -->
+			<forward name="goodSelectBigHead" path="/fg-selectBigGoods.jsp" />
+			<forward name="goodSelectFreeHead" path="/fg-selectFreeGoods.jsp" />
+			<forward name="goodSelectNewHead" path="/fg-selectNewGoods.jsp" />
+			<forward name="goodSelectOneHead" path="/fg-goodSelectOne.jsp" />
+			<forward name="goodSelectSmallHead" path="/fg-selectSmallGoods.jsp" />
+		</action>
+
+		<!-- 订单处理 -->
+		<action name="orderForm" path="/orderAction" scope="request"
+			type="cn.cumt.library.action.OrderAction" validate="true">
+			<forward name="insertOrder" path="/orderAction.do?action=0" />
+			<forward name="selectOrder" path="/stuAppointment.jsp" />			
+			<forward name="selectOrderId" path="/stuAppointmentB.jsp" />			
+			<forward name="deleteOrder" path="/stuAppointmentC.jsp" />			
+		</action>
+
+		<!-- 约单处理 -->
+		<action name="orderReactForm" path="/orderReactAction" scope="request"
+			type="cn.cumt.library.action.OrderReactAction" validate="true">
+			<forward name="insertOrderReact" path="/stuAppointmentC.jsp" />
+			<forward name="deleteOrderReact" path="/stuAppointmentC.jsp" />			
+		</action>
+
+		<!-- 公告处理 -->
+		<action name="afficheForm" path="/afficheAction" scope="request"
+			type="cn.cumt.library.action.AfficheAction" validate="true">
+			<forward name="afficheSelect" path="/bg-afficheSelect.jsp" />
+			<forward name="afficheSelectOne" path="/bg-afficheUpdate.jsp" />
+			<forward name="afficheContent" path="/bg-afficheContent.jsp" />
+		</action>
+
+
+		<!-- 评论处理 -->
+		<action name="commentForm" path="/commentAction" scope="request"
+			type="cn.cumt.library.action.CommentAction" validate="true">
+			<forward name="insertComment" path="/commentResult.jsp" />
+			<forward name="selectOneOrder" path="/bg-orderContent.jsp" />
+			<forward name="deleteComment" path="/shareQuarterC.jsp" />			
+		</action>
+
+		<!-- 分享处理 -->
+		<action name="postForm" path="/postAction" scope="request"
+			type="cn.cumt.library.action.PostAction" validate="true">
+			<forward name="insertPost" path="/postAction.do?action=0" />
+			<forward name="selectPost" path="/shareQuarter.jsp" />
+			<forward name="selectPostId" path="/shareQuarterB.jsp" />
+			<forward name="deletePost" path="/shareQuarterC.jsp" />
+		</action>
+		
+		<!-- 预约处理 -->
+		<action name="reserveForm" path="/reserveAction" scope="request"
+			type="cn.cumt.library.action.ReserveAction" validate="true">
+			<forward name="orderJudge" path="/orderJudge.jsp" />
+			<forward name="checkReserve" path="/checkReserveResult.jsp" />
+		</action>
+		
+		<!-- 邮箱处理 -->
+		<action name="mailboxForm" path="/mailboxAction" scope="request"
+			type="cn.cumt.library.action.MailboxAction" validate="true">
+			<forward name="insertMailbox" path="/mailboxResult.jsp" />
+			<forward name="selectMailbox" path="/adminMailbox.jsp" />
+			
+		</action>		
+		
+	</action-mappings>
+
+	<controller processorClass="cn.cumt.library.tool.SelfRequestProcessor" />
+
+</struts-config>
